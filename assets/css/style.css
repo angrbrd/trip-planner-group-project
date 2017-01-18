@@ -1,3 +1,48 @@
-#tripName {
-	padding:100px;
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 20px;
+	color: #ffffff;
+}
+
+h1 {
+	font-weight: 100;
+	text-align: center;
+	letter-spacing: 20px;
+	padding: 0px;
+}
+
+h5 {
+	text-align: center;
+	font-weight: 100;
+	padding: 0px;
+	margin-top: 0px;
+}
+
+.divider {
+	background-color: #fff;
+}
+
+.noPad {
+	padding: 0px;
+}
+
+.padding {
+	padding: 20px;
+}
+
+img {
+	width:100%;
+}
+
+.header .row {
+	margin-bottom: 0px;
+}
+
+#title {
+	padding-bottom: 0px;
+}
+
+.border {
+	border: 3px solid orange;
 }

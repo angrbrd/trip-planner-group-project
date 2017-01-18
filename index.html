@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Plan Your Trip!</title>
+	<title>PLAN YOUR TRIP!</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container">
-<div class="row orange lighten-5" id="title">
-	Plan Your Trip!
+<div class="container header">
+<div class="row orange lighten-3 padding no-margin-bottom" id="title">
+	<h1>PLAN YOUR TRIP!</h1>
 </div>
-<div class="row orange lighten-4" id="instructions">
-	Enter your trip information to see your route. Then click along your route to see current gas prices along the way! 
+<div class="divider"> </div>
+<div class="row orange lighten-3 padding no-margin-bottom" id="instructions">
+	<h5> Enter your trip information to see your route. <br> Then click along your route to see current gas prices along the way! </h5>
 </div>
-<div class="row">
+<div class="row noPad">
 <div class="col s4">
 
-<div id="left-side">
 
-	<div id="basicInfo" class="orange lighten-3"> 
-		<div id="tripName"> Trip Name </div>
-		<div id="startDate"> Start Date </div>
-		<div id="endDate"> End Date</div>
+
+	<div id="basicInfo" class="padding"> 
+		<form>
+			<input placeholder="Name your trip" id="tripName" type="text" class="">
+          <label for="trip_name">Trip Name</label>
+			<input type="date" id="startDate" class="datepicker">
+			<label for="start_date">Start Date</label>
+			<input type="date" id="endDate" class="datepicker">
+			<label for="end_date">End Date</label>
+		</form>
+		
 	</div>
-	<div id="tripInfo" class="orange lighten-2">
-		<div id="origin"></div>
-		<div id="destination"></div>
+	
+	<div id="tripInfo" class="padding">
+		<form>
+			<input placeholder="" id="origin" type="text" class="">
+          <label for="origin">Origin City</label>
+          	<input placeholder="" id="destination" type="text" class="">
+          <label for="destination">Destination</label>
+		</form>
+		
+		
 		<div id="stopOne"></div>
 		<div id="stopTwo"></div>
 		<div id="stopThree"></div>
 	</div>
-	<div id="carInfo" class="orange lighten-1">
-		<div id="tankSize"></div>
-		<div id="mpg"></div>
+	
+	<div id="carInfo" class="padding">
+		<form>
+			<input placeholder="" id="tankSize" type="text" class="">
+          <label for="tank_size">Tank Size (gallons)</label>
+          	<input placeholder="" id="mpg" type="text" class="">
+          <label for="mpg">Miles Per Gallon</label>
+		</form>
+		
 	</div>
-</div>
+
 </div>
 
 <div class="col s8">
 <div id="right-side">
-	<div id="map"> Map Here </div>
+	<div id="map" class="border"><img src="assets/images/placeholder.png"></div>
 	<div id="output"></div>
 </div>
 </div>
 </div>
 </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script> 
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
 </body>
+
 </html>
 
 
