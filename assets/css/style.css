@@ -2,7 +2,6 @@
 	box-sizing: border-box;
 	margin: 0px;
 	padding: 20px;
-	color: #ffffff;
 }
 
 h1 {
@@ -10,6 +9,7 @@ h1 {
 	text-align: center;
 	letter-spacing: 20px;
 	padding: 0px;
+	color: #fff;
 }
 
 h5 {
@@ -17,6 +17,15 @@ h5 {
 	font-weight: 100;
 	padding: 0px;
 	margin-top: 0px;
+	color: #fff;
+}
+
+.margin-bottom {
+	margin-bottom: 20px;
+}
+
+#instructions {
+	margin-bottom: 20px;
 }
 
 .divider {
@@ -45,4 +54,25 @@ img {
 
 .border {
 	border: 3px solid orange;
+}
+
+h5.section {
+	padding:15px;
+}
+
+.btn {
+	margin-bottom: 20px;
+	margin-left: 120px;
+}
+
+thead {
+	color: #fff;
+	font-size: 18px;
+	font-weight: 100;
+}
+
+footer {
+	text-align: center;
+	padding: 30px;
+	color: #fff;
 }
