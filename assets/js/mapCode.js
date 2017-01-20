@@ -33,7 +33,11 @@ $(document).ready(function(){
     		'<br>Longitude: ' + lng
   		});
 
-  		var queryURL = "http://devapi.mygasfeed.com/stations/radius/"+lat+"/"+lng+"/3/reg/Price/rfej9napna.json";
+  		getGas(lat, lng);
+	}
+	//takes latitude and longitude from marker placement to get gas data in a 10 mile radius
+	function getGas (lat, lng){
+		var queryURL = "http://api.mygasfeed.com/stations/radius/"+lat+"/"+lng+"/10/reg/Price/lg2dvyvl7v.json";
   		
   		$.ajax({
         url: queryURL,
@@ -41,11 +45,14 @@ $(document).ready(function(){
       	})
       	.done(function(response) {
       		console.log(response);
+      		console.log(response.stations[0].city);
+      		console.log(response.stations[0].address);
+      		console.log(response.stations[0].reg_price);
       	});
-	}
+	};
 
 	//simple route calculator with a default of driving. easy enough to send arguments into function to replace start and end.
-	function calcRoute() {
+	function calcRoute(start, end) {
 		var start = "New York, NY";
 		var end = "2003 Watson Rd, Durham, NC";
 		var request = {
