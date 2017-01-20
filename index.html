@@ -7,94 +7,101 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container header">
-<div class="row orange lighten-3 padding no-margin-bottom" id="title">
-	<h1>PLAN YOUR TRIP!</h1>
-</div>
-<div class="divider"> </div>
-<div class="row orange lighten-3 padding margin-bottom" id="instructions">
-	<h5> Enter your trip information to see your route. <br> Then click along your route to see current gas prices along the way! </h5>
-</div>
-<div class="row noPad">
-<div class="col s4">
+	<div class="container header">
+		<div class="row orange lighten-3 padding no-margin-bottom" id="title">
+			<h1>PLAN YOUR TRIP!</h1>
+		</div>
+		<div class="divider"> </div>
+		<div class="row orange lighten-3 padding" id="instructions">
+			<h5> Enter your trip information to see your route. <br> Then click along your route to see current gas prices along the way! </h5>
+		</div>
+		<div class="row noPad">
+			<div class="col s4">
 
 
-<form class="border">
-	<div id="tripInfo" class="padding"> 
-			<h5 class="orange lighten-3">TRIP INFO</h5>
-			
-			<input placeholder="Name your trip" id="tripName" name="tripName" type="text" class="">
-          <label for="tripName">Trip Name</label>
-          
-			<input type="date" id="startDate" class="datepicker">
-			<label for="start_date">Start Date</label>
-			<input type="date" id="endDate" class="datepicker">
-			<label for="end_date">End Date</label>
+			<form class="border">
+				<div id="tripInfo" class="padding"> 
+						<h5 class="orange lighten-3">TRIP INFO</h5>
+						
+						<input placeholder="Name your trip" id="tripName" name="tripName" type="text" class="">
+			          		<label for="tripName">Trip Name</label>
+			          
+						<input type="date" id="startDate" class="datepicker">
+							<label for="start_date">Start Date</label>
+						<input type="date" id="endDate" class="datepicker">
+							<label for="end_date">End Date</label>
+					
+					
+						<input placeholder="" id="origin" type="text" class="">
+			          		<label for="origin">Origin City</label>
+			          	<input placeholder="" id="destination" type="text" class="">
+			          		<label for="destination">Destination</label>
 		
 		
-			<input placeholder="" id="origin" type="text" class="">
-          <label for="origin">Origin City</label>
-          	<input placeholder="" id="destination" type="text" class="">
-          <label for="destination">Destination</label>
 		
-		
-		
-		<div id="stopOne"></div>
-		<div id="stopTwo"></div>
-		<div id="stopThree"></div>
-	</div>
+					<div id="stopOne"></div>
+					<div id="stopTwo"></div>
+					<div id="stopThree"></div>
+				</div>
 	
-	<div id="carInfo" class="padding">
-			<h5 class="orange lighten-3">CAR INFO</h5>
-			<input placeholder="" id="tankSize" type="text" class="">
-          <label for="tank_size">Tank Size (gallons)</label>
-          	<input placeholder="" id="mpg" type="text" class="">
-          <label for="mpg">Miles Per Gallon</label>
-		
-		
-	</div>
+				<div id="carInfo" class="padding">
+						<h5 class="orange lighten-3">CAR INFO</h5>
+						<input placeholder="" id="tankSize" type="text" class="">
+			          		<label for="tank_size">Tank Size (gallons)</label>
+			          	<input placeholder="" id="mpg" type="text" class="">
+			          		<label for="mpg">Miles Per Gallon</label>
+					
+					
+				</div>
 
 	<br><br>
 
-	<div id="submit" class="btn">
-        <span>Submit</span>
+				<div id="submit" class="btn">
+        			<span>Submit</span>
 
         
-      </div>
-</form>
+      			</div>
+			</form>
 
-</div>
+			</div>
 
-<div class="col s8">
-<div id="right-side">
-	<div id="map" class="border margin-bottom" style="width:100%;height:500px"></div>
-	<div id="output"> 
-		<table class="border centered">
-        <thead class="orange lighten-3">
-          <tr>
-              <th data-field="Latitude">LATITUDE</th>
-              <th data-field="Longitude">LONGITUDE</th>
-              <th data-field="gasPrice">GAS PRICE</th>
-          </tr>
-        </thead>
+			<div class="col s8">
+			<div id="right-side">
+				<div id="map" class="border marginBottom" style="width:100%;height:500px"></div>
+				<div id="output"> 
+					<table class="border centered">
+			        <thead class="orange lighten-3 marginTop">
+			          <tr>
+			              <th data-field="Latitude">LATITUDE</th>
+			              <th data-field="Longitude">LONGITUDE</th>
+			              <th data-field="gasPrice">GAS PRICE</th>
+			          </tr>
+			        </thead>
 
-        <tbody>
-        	<tr>
-        		<td> example </td>
-        		<td> example </td>
-        		<td> example </td>
-        	</tr>
+			        <tbody>
+			        	<tr>
+			        		<td> example </td>
+			        		<td> example </td>
+			        		<td> example </td>
+			        	</tr>
 
-        </tbody>
-        </table>
+			        </tbody>
+			        </table>
 
+				</div>
+			</div>
+			</div>
+		</div>
+
+		<div class="row marginTop noPad">
+		<div class="border col s12">
+			<h5 class="marginTop orange lighten-3"> CHEAPER TO FLY? </h5>
+			<div id="flightInfo"> </div>
+		</div>
+		</div>
 	</div>
-</div>
-</div>
-</div>
-</div>
 
-<
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 <script> 

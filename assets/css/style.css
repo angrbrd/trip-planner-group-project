@@ -20,8 +20,12 @@ h5 {
 	color: #fff;
 }
 
-.margin-bottom {
+.marginBottom {
 	margin-bottom: 20px;
+}
+
+.marginTop {
+	margin-top: 20px;
 }
 
 #instructions {
