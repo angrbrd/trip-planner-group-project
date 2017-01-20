@@ -44,10 +44,18 @@ $(document).ready(function(){
         method: "GET"
       	})
       	.done(function(response) {
-      		console.log(response);
-      		console.log(response.stations[0].city);
-      		console.log(response.stations[0].address);
-      		console.log(response.stations[0].reg_price);
+      		//console.log(response);
+      		var i = 0;
+      		while(response.stations[i].reg_price === "N/A"){
+      			i++;
+      			if(i === response.stations.length){break;}
+      		}
+      		var address = response.stations[i].address;
+      		var city = response.stations[i].city;
+      		var price = response.stations[i].reg_price;
+      		var outputRow = $("<tr>");
+      		outputRow.html("<td>"+address+"</td><td>"+city+"</td><td>"+price+"</td>");
+      		$("#output").append(outputRow);
       	});
 	};
 
