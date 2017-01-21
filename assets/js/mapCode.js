@@ -94,11 +94,24 @@
 
 $(document).ready(function(){
 	mapInit();
+
 	//calcRoute();
 });
 
 $("#submit").click(function(event){
 	event.preventDefault();
 	buildTrip();
+
+	calcRoute();
+
+	//$(#)
+
+	//Get origin, destination, start date, and end date from input
+		//var originData = $("#origin").val();
+		//console.log(originData);
+	//format dates in new var
+	//create ajax call to expedia
+	//display results
+
 });
 

@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div class="container header">
-		<div class="row orange lighten-3 padding no-margin-bottom" id="title">
+		<div class="row orange padding no-margin-bottom" id="title">
 			<h1>PLAN YOUR TRIP!</h1>
 		</div>
 		<div class="divider"> </div>
-		<div class="row orange lighten-3 padding" id="instructions">
+		<div class="row orange padding" id="instructions">
 			<h5> Enter your trip information to see your route. <br> Then click along your route to see current gas prices along the way! </h5>
 		</div>
 		<div class="row noPad">
@@ -21,7 +21,7 @@
 
 			<form class="border">
 				<div id="tripInfo" class="padding"> 
-						<h5 class="orange lighten-3">TRIP INFO</h5>
+						<h5 class="orange">TRIP INFO</h5>
 						
 						<input placeholder="Name your trip" id="tripName" name="tripName" type="text" class="">
 			          		<label for="tripName">Trip Name</label>
@@ -45,7 +45,7 @@
 				</div>
 	
 				<div id="carInfo" class="padding">
-						<h5 class="orange lighten-3">CAR INFO</h5>
+						<h5 class="orange">CAR INFO</h5>
 						<input placeholder="" id="tankSize" type="text" class="">
 			          		<label for="tank_size">Tank Size (gallons)</label>
 			          	<input placeholder="" id="mpg" type="text" class="">
@@ -73,7 +73,7 @@
 	<div id="map" class="border" style="width:100%;height:500px"></div>
 	<div> 
 		<table class="border centered marginTop">
-        <thead class="orange lighten-3">
+        <thead class="orange">
           <tr>
               <th data-field="address">ADDRESS</th>
               <th data-field="city">CITY</th>
@@ -97,11 +97,23 @@
 </div>
 </div>
 	<div class="row marginTop noPad">
-		<div class="border col s12">
-			<h5 class="marginTop orange lighten-3"> CHEAPER TO FLY? </h5>
-			<div id="flightInfo"> </div>
+		<div class="col s6">
+			<div class="border">
+			<h5 class="orange"> NEED A HOTEL? </h5>
+			<div id="hotelInfo"> </div>
+			</div>
+		</div>
+		<div class="col s6">
+			<div class="border">
+			<h5 class="orange"> SAVED TRIPS </h5>
+			<div id="savedTrips"> </div>
+
+				<div id="save" class="btn">
+        			<span>SAVE CURRENT TRIP!</span>
+        		</div>
 		</div>
 		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
