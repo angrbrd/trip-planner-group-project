@@ -38,20 +38,32 @@
 	function placeMarker(map, location){
 		var lat = location.lat();
 		var lng = location.lng();
-
-		var marker = new google.maps.Marker({
-			position: location,
-			map: map
-		});
-		var infowindow = new google.maps.InfoWindow({
-    		content: 'Latitude: ' + lat +
-    		'<br>Longitude: ' + lng
-  		});
-
-  		getGas(lat, lng);
+	
+		var dropMarker = function(gas){
+			console.log(gas);
+			var marker = new google.maps.Marker({
+				position: location,
+				map: map
+			});
+			if (gas.exists){
+				google.maps.event.addListener(marker,'click',function() {
+			    	var infowindow = new google.maps.InfoWindow({
+			      		content: gas.name + " " + gas.price
+					});
+				  	infowindow.open(map,marker);
+				});	
+			} else {
+				var infowindow = new google.maps.InfoWindow({
+					content: "No data here"
+				});
+				infowindow.open(map, marker);
+			}	
+		};
+		getGas(lat, lng, dropMarker);
+  		
 	};
 	//takes latitude and longitude from marker placement to get gas data in a 10 mile radius
-	function getGas (lat, lng){
+	function getGas (lat, lng, callback){
 		var queryURL = "http://api.mygasfeed.com/stations/radius/"+lat+"/"+lng+"/10/reg/Price/lg2dvyvl7v.json";
   		
   		$.ajax({
@@ -59,18 +71,33 @@
         method: "GET"
       	})
       	.done(function(response) {
-      		//console.log(response);
-      		var i = 0;
-      		while(response.stations[i].reg_price === "N/A"){
-      			i++;
-      			if(i === response.stations.length){break;}
-      		}
-      		var address = response.stations[i].address;
-      		var city = response.stations[i].city;
-      		var price = response.stations[i].reg_price;
-      		var outputRow = $("<tr>");
-      		outputRow.html("<td>"+address+"</td><td>"+city+"</td><td>"+price+"</td>");
-      		$("#output").append(outputRow);
+      		console.log(response);
+      		var gas = {};
+      		if (response.stations.length === 0){
+      			gas = {exists: false};
+      		} else {
+	      		var i = 0;
+	      		while(response.stations[i].reg_price === "N/A"){
+	      			i++;
+	      			if(i === response.stations.length){break;}
+	      		}
+	      		var name = response.stations[i].station;
+	      		var address = response.stations[i].address;
+	      		var city = response.stations[i].city;
+	      		var price = response.stations[i].reg_price;
+	      		var outputRow = $("<tr>");
+	      		outputRow.html("<td>"+name+"</td><td>"+address+"</td><td>"+city+"</td><td>"+price+"</td>");
+	      		$("#output").append(outputRow);
+	      		gas = {
+	      			exists : true,
+	      			"name": name,
+	      			"address" : address,
+	      			"city" : city,
+	      			"price" : price
+	      		};
+	      		console.log("gas " + gas);
+	      	}
+	      	callback(gas);
       	});
 	};
 
@@ -102,7 +129,6 @@ $("#submit").click(function(event){
 	event.preventDefault();
 	buildTrip();
 
-	calcRoute();
 
 	//$(#)
 
