@@ -125,9 +125,36 @@ $(document).ready(function(){
 	//calcRoute();
 });
 
+
+
 $("#submit").click(function(event){
 	event.preventDefault();
 	buildTrip();
+	expediaSearch();
+});
+
+
+function expediaSearch() {
+    var originSearch = $("#origin").val();
+	var destinationSearch= $("#destination").val();
+	var startDateSearch = $("#startDate").val();
+	var endDateSearch = $("#endDate").val();
+        var queryURL = "https://utcors1.herokuapp.com/http://api.hotwire.com/v1/deal/hotel?apikey=pvk45cq5h7r2dyzg2nd9sk98&dest=" + destinationSearch + "&limit=1&format=JSON"
+
+        // Creates AJAX call for hotel deal
+        $.ajax({
+        	headers: {"x-requested-with": " "},
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+        	var responseHeadline = response.Result.HotelDeal.Headline;
+        	var responseRating = response.Result.HotelDeal.StarRating;
+        	var responsePrice = response.Result.HotelDeal.Price;
+        	var responseURL = response.Result.HotelDeal.Url;
+        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
+        });
+
+      }
 
 
 	//$(#)
@@ -139,5 +166,6 @@ $("#submit").click(function(event){
 	//create ajax call to expedia
 	//display results
 
-});
+
+
 
