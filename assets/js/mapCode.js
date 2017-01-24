@@ -43,7 +43,9 @@
 			console.log(gas);
 			var marker = new google.maps.Marker({
 				position: location,
-				map: map
+				map: map,
+				icon: 'http://maps.google.com/mapfiles/kml/pal2/icon21.png',
+				animation: google.maps.Animation.DROP
 			});
 			if (gas.exists){
 				google.maps.event.addListener(marker,'click',function() {
