@@ -18,7 +18,7 @@
 		});
 		directionsDisplay.setMap(map);
 	};
-
+	//creates a trip object and pushes it into a trip array.
 	function buildTrip(){
 		var trip = {
 			tripName : $("#tripName").val().trim(),
@@ -123,8 +123,6 @@
 
 $(document).ready(function(){
 	mapInit();
-
-	//calcRoute();
 });
 
 
