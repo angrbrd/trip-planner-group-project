@@ -1,0 +1,22 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "assets",
+    "rewrites": [
+      {
+        "source": "/auth",
+        "destination": "/auth.html"
+      },
+      {
+        "source": "/tripPlanner",
+        "destination": "/tripPlanner.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
