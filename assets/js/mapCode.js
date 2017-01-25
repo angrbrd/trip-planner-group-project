@@ -159,19 +159,6 @@
 		expediaSearch();
 	}
 
-
-$(document).ready(function(){
-	mapInit();
-});
-
-
-
-$("#submit").click(function(event){
-	event.preventDefault();
-	submit();
-});
-
-
 function expediaSearch() {
     var originSearch = $("#origin").val();
 	var destinationSearch= $("#destination").val();
@@ -190,10 +177,21 @@ function expediaSearch() {
         	var responseRating = response.Result.HotelDeal.StarRating;
         	var responsePrice = response.Result.HotelDeal.Price;
         	var responseURL = response.Result.HotelDeal.Url;
-        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
+        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a target='_blank' href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
         });
 
       }
+
+
+$(document).ready(function(){
+	mapInit();
+});
+
+
+$("#submit").click(function(event){
+	event.preventDefault();
+	submit();
+});
 
 
 	
