@@ -147,6 +147,7 @@ function expediaSearch() {
           url: queryURL,
           method: "GET"
         }).done(function(response) {
+        	
         	var responseHeadline = response.Result.HotelDeal.Headline;
         	var responseRating = response.Result.HotelDeal.StarRating;
         	var responsePrice = response.Result.HotelDeal.Price;
@@ -157,14 +158,7 @@ function expediaSearch() {
       }
 
 
-	//$(#)
-
-	//Get origin, destination, start date, and end date from input
-		//var originData = $("#origin").val();
-		//console.log(originData);
-	//format dates in new var
-	//create ajax call to expedia
-	//display results
+	
 
 
 
