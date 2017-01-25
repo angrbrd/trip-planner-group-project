@@ -30,7 +30,7 @@
 		};
 		getDistance(trip);
 		console.log(trip);
-		trips.push(trip);
+		//trips.push(trip);
 		calcRoute(trip.startPoint, trip.endPoint);
 	};
 
@@ -59,6 +59,9 @@
 					content: "No data here"
 				});
 				infowindow.open(map, marker);
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map, marker);
+				});
 			}	
 		};
 		getGas(lat, lng, dropMarker);
@@ -147,6 +150,8 @@
 		var gasPrice = 2.5;
 		var cost = (distance / mileage) * gasPrice;
 		console.log(cost);
+		$("#estimate").empty()
+				.html("$" + cost.toFixed(2));
 	}
 
 	function submit () {
