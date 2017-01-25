@@ -20,6 +20,17 @@ h5 {
 	color: #fff;
 }
 
+.open-buttons {
+	font-size: 20px;
+	margin-top: 20px;
+	margin-right: 30px;
+}
+
+#positioning {
+	position:relative;
+	top:100px;
+}
+
 .marginBottom {
 	margin-bottom: 20px;
 }
@@ -52,6 +63,10 @@ img {
 	width:100%;
 }
 
+.button-right{
+	margin-top: 20px;
+	margin-right: 30px;
+}
 .header .row {
 	margin-bottom: 0px;
 }
@@ -70,7 +85,6 @@ h5.section {
 
 .btn {
 	margin-bottom: 20px;
-	margin-left: 120px;
 }
 
 .emphasis {
