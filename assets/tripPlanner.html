@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PLAN YOUR TRIP!</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/png" href="http://maps.google.com/mapfiles/kml/pal2/icon21.png">
+</head>
+
+<body>
+	<div class="container header"> <!-- Main Container -->
+		<div class="row orange padding no-margin-bottom" id="title">
+			<h1>PLAN YOUR TRIP!</h1>
+		</div>
+
+		<div class="divider"> </div>
+
+		<div class="row orange padding" id="instructions">
+			<h5> Enter your trip information to see your route. <br> Then click along your route to see current gas prices along the way! </h5>
+		</div>
+
+		<div class="divider"> </div>
+
+		<div class="row border padding" id="bottom-line">
+			<div id="login-info"> <span id="logout-button" class="btn large orange right">logout</span></div>
+		</div>
+
+		<div class="row noPad">
+
+			<div class="col s4"> <!-- Left Side -->
+				<form class="border"> <!-- Trip Form -->
+					<div id="tripInfo" class="padding"> <!-- Trip Info -->
+						<h5 class="orange">TRIP INFO</h5>
+						
+						<input placeholder="Name your trip" id="tripName" name="tripName" type="text" class="">
+			          	<label for="tripName">Trip Name</label>
+
+						<input type="date" id="startDate" class="datepicker">
+						<label for="start_date">Start Date</label>
+
+						<input type="date" id="endDate" class="datepicker">
+						<label for="end_date">End Date</label>
+
+						<input placeholder="" id="origin" type="text" class="">
+			          	<label for="origin">Origin City</label>
+
+			          	<input placeholder="" id="destination" type="text" class="">
+			          	<label for="destination">Destination</label>
+					</div> <!-- End Trip Info -->
+		
+					<div id="carInfo" class="padding"> <!-- Car Info -->
+						<h5 class="orange">CAR INFO</h5>
+				        <input placeholder="" id="mpg" type="text" class="">
+				        <label for="mpg">Miles Per Gallon</label>
+					</div> <!-- End Car Info -->
+
+					<br><br>
+
+					<div id="submit" class="btn"> <!-- Submit Button -->
+						<span>Submit</span>
+	      			</div> <!-- End Submit Button -->
+				</form> <!-- End Trip Form -->
+			</div> <!-- End Left Side -->
+
+			<div class="col s8"> <!-- Right Side -->
+				<div id="right-side">
+					<div id="map" class="border" style="width:100%;height:500px"></div>
+
+					<div> <!-- Gas Station Table -->
+						<table class="border centered marginTop">
+	        				<thead class="orange">
+	          					<tr>
+	          	  					<th data-field="station">STATION</th>
+						            <th data-field="address">ADDRESS</th>
+						            <th data-field="city">CITY</th>
+						            <th data-field="gasPrice">GAS PRICE</th>
+						        </tr>
+	        				</thead>
+
+	        				<tbody id="output"></tbody>
+	       				</table>
+	       			</div> <!-- End Gas Station Table -->
+				</div>
+			</div> <!-- End Right Side -->
+
+		</div>
+
+		<div class="row marginTop noPad"> <!-- Gas Cost Estimate -->
+			<div class="col s12">
+				<div class="border">
+					<h5 class="orange"> GAS COST ESTIMATE </h5>
+					<h4 id="estimate" class="center">$</h4>
+					<p class="padding emphasis border"> * Please note: This is only a rough approximation of the cost of your trip based on recent gas prices. You may wish to do your own calculations in order to ensure accuracy in budgeting! </p> 
+				</div>
+			</div>
+		</div> <!-- End Gas Cost Estimate -->
+
+		<div class="row marginTop noPad">
+			<div class="col s6"> <!-- Hotel Suggestion -->
+				<div class="border">
+					<h5 class="orange"> NEED A HOTEL? </h5>
+					<div id="hotelInfo"> </div>
+					<br> <br>
+					<div id="hotwireInfo" class="center"> 
+						Hotel deals by hotwire.com 
+						<br> 
+						<img id="hotwire" src="images/hotwirelogo.png"> 
+					</div>
+				</div>
+			</div> <!-- End Hotel Suggestion -->
+
+			<div class="col s6"> <!-- Saved Trips Panel -->
+				<div class="border">
+					<h5 class="orange"> SAVED TRIPS </h5>
+					<div id="savedTrips"> </div>
+
+					<div id="save" class="center btn"> <!-- Save Current Trip Button -->
+	        			<span>SAVE CURRENT TRIP!</span>
+	        		</div> <!-- End Save Current Trip Button -->
+				</div>
+			</div> <!-- End Saved Trips Panel -->
+		</div>
+	
+	</div> <!-- End Main Container -->
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script> 
+		$('.datepicker').pickadate({
+		    selectMonths: true, // Creates a dropdown to control month
+		    selectYears: 15 // Creates a dropdown of 15 years to control year
+		  });
+	</script>
+	<script type="text/javascript" src="js/mapCode.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBvVl27lo8-KOTnl9BnzaizFeWyIZVNblM"></script>
+</body>
+
+<br> <br> <br>
+
+<footer class="orange"> <h5> (c) TALENTED TANGELOS 2017 </h5> </footer>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
