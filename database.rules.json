@@ -1,0 +1,12 @@
+/*
+	Reading and writing to the database will be permitted upon successful
+	user athentication. Need to understand how to set that up. For now,
+	making the database read and write functionality inaccessible.
+*/
+
+{
+  "rules": {
+    ".read": false,
+    ".write": false
+  }
+}
