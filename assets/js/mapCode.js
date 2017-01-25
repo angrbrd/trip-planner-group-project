@@ -26,11 +26,11 @@
 			endDate : $("#endDate").val().trim(),
 			startPoint : $("#origin").val().trim(),
 			endPoint : $("#destination").val().trim(),
-			tank : $("#tankSize").val().trim(),
 			mileage : $("#mpg").val().trim() 
 		};
+		getDistance(trip);
 		console.log(trip);
-		trips.push(trip);
+		//trips.push(trip);
 		calcRoute(trip.startPoint, trip.endPoint);
 	};
 
@@ -59,6 +59,9 @@
 					content: "No data here"
 				});
 				infowindow.open(map, marker);
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map, marker);
+				});
 			}	
 		};
 		getGas(lat, lng, dropMarker);
@@ -120,19 +123,41 @@
 		});
 	}
 
+	function getDistance (trip) {
+		var origin = trip.startPoint.replace(/\s/g, "");
+		var destination = trip.endPoint.replace(/\s/g, "");
+		console.log(origin, destination);
+		var queryURL = "https://utcors1.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+origin+"&destinations="+destination+"&key=";
+		
+		$.ajax({
+        	url: queryURL,
+        	method: "GET"
+      	})
+      	.done(function(response) {
+      		var distance = response.rows[0].elements[0].distance.text;
+      		
+      		distance = distance.replace(/[^\d.]/g, "");
+      		//distance = distance.replace("mi", "");
+      		console.log(trip);
+      		console.log("distance value: "+ distance);
+      		getCost(trip.mileage, distance);
+      	});
+	}
 
-$(document).ready(function(){
-	mapInit();
-});
+	function getCost (mileage, distance) {
+		distance = parseInt(distance);
+		console.log(mileage, distance);
+		var gasPrice = 2.5;
+		var cost = (distance / mileage) * gasPrice;
+		console.log(cost);
+		$("#estimate").empty()
+				.html("$" + cost.toFixed(2));
+	}
 
-
-
-$("#submit").click(function(event){
-	event.preventDefault();
-	buildTrip();
-	expediaSearch();
-});
-
+	function submit () {
+		buildTrip();
+		expediaSearch();
+	}
 
 function expediaSearch() {
     var originSearch = $("#origin").val();
@@ -152,10 +177,21 @@ function expediaSearch() {
         	var responseRating = response.Result.HotelDeal.StarRating;
         	var responsePrice = response.Result.HotelDeal.Price;
         	var responseURL = response.Result.HotelDeal.Url;
-        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
+        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a target='_blank' href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
         });
 
       }
+
+
+$(document).ready(function(){
+	mapInit();
+});
+
+
+$("#submit").click(function(event){
+	event.preventDefault();
+	submit();
+});
 
 
 	
