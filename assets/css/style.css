@@ -28,8 +28,12 @@ h5 {
 	margin-top: 20px;
 }
 
-#instructions {
+#bottom-line {
 	margin-bottom: 20px;
+}
+
+#logout-button {
+	margin: 0px;
 }
 
 .divider {
@@ -67,6 +71,10 @@ h5.section {
 .btn {
 	margin-bottom: 20px;
 	margin-left: 120px;
+}
+
+.emphasis {
+	font-style: italic; 
 }
 
 thead {
