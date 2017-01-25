@@ -1,9 +1,7 @@
-# trip-planner-group-project
-Trip Planner Application
+# Trip Planner Application
 
+## The Talanted Tangelos 
 
-James McHale add to ReadMe.
-
-HDS
-
-ANYA!!!
+* James McHale
+* Heather Seaman
+* Anya Derbakova
