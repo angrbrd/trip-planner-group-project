@@ -26,9 +26,9 @@
 			endDate : $("#endDate").val().trim(),
 			startPoint : $("#origin").val().trim(),
 			endPoint : $("#destination").val().trim(),
-			tank : $("#tankSize").val().trim(),
 			mileage : $("#mpg").val().trim() 
 		};
+		getDistance(trip);
 		console.log(trip);
 		trips.push(trip);
 		calcRoute(trip.startPoint, trip.endPoint);
@@ -120,6 +120,40 @@
 		});
 	}
 
+	function getDistance (trip) {
+		var origin = trip.startPoint.replace(/\s/g, "");
+		var destination = trip.endPoint.replace(/\s/g, "");
+		console.log(origin, destination);
+		var queryURL = "https://utcors1.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+origin+"&destinations="+destination+"&key=";
+		
+		$.ajax({
+        	url: queryURL,
+        	method: "GET"
+      	})
+      	.done(function(response) {
+      		var distance = response.rows[0].elements[0].distance.text;
+      		
+      		distance = distance.replace(/[^\d.]/g, "");
+      		//distance = distance.replace("mi", "");
+      		console.log(trip);
+      		console.log("distance value: "+ distance);
+      		getCost(trip.mileage, distance);
+      	});
+	}
+
+	function getCost (mileage, distance) {
+		distance = parseInt(distance);
+		console.log(mileage, distance);
+		var gasPrice = 2.5;
+		var cost = (distance / mileage) * gasPrice;
+		console.log(cost);
+	}
+
+	function submit () {
+		buildTrip();
+		expediaSearch();
+	}
+
 
 $(document).ready(function(){
 	mapInit();
@@ -129,8 +163,7 @@ $(document).ready(function(){
 
 $("#submit").click(function(event){
 	event.preventDefault();
-	buildTrip();
-	expediaSearch();
+	submit();
 });
 
 
