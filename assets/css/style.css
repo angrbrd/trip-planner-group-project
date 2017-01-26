@@ -39,8 +39,9 @@ h5 {
 	margin-top: 20px;
 }
 
-#bottom-line {
+#login-info {
 	margin-bottom: 20px;
+	display: none;
 }
 
 #logout-button {
@@ -108,6 +109,10 @@ thead {
 #hotwire {
 	width: 40%;
 	display: inline-block;
+}
+
+#savedTrips {
+	display: none;
 }
 
 footer {
