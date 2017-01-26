@@ -1,3 +1,73 @@
+/*
+//
+//  Firebase Authentication Section
+//
+*/
+
+firebase.auth().onAuthStateChanged(
+	function(user) {
+		if (user) {
+			// User is signed in
+			console.log("User is signed in!");
+
+	    	var displayName = user.displayName;
+	    	var email = user.email;
+	    	var emailVerified = user.emailVerified;
+	    	var photoURL = user.photoURL;
+	    	var uid = user.uid;
+	    	var providerData = user.providerData;
+
+	    	// Print the user data for confirmation
+	    	console.log(
+	    		JSON.stringify({
+	        		displayName: displayName,
+	        		email: email,
+	        		emailVerified: emailVerified,
+	        		photoURL: photoURL,
+	        		uid: uid,
+	        		providerData: providerData
+	      		})
+	    	);
+
+	    	// Set the user image
+	    	$("#user-image").attr("src", user.photoURL);
+
+	    	// Set the user name and email address
+	    	var nameP = $("<p>").html(user.displayName);
+	    	var emailP = $("<p>").html(user.email);
+
+	    	$("#user-info").append(nameP);
+	    	$("#user-info").append(emailP);
+
+	    	// Show the saved trips panel and display the logout button
+	    	//$("#login-panel").show();
+	    	$("#savedTrips").show();
+	    	$("#login-button").hide();
+	  	} else {
+	    	// User is signed out
+	    	console.log("User is signed out!");
+
+	    	// Clear the image source as well as the user info
+	    	$("#account-details").hide();
+	    	$("#user-image").attr("src", "");
+	    	$("#user-info").empty();
+
+	    	// Hide the saved trips panel and display the login button 
+	    	$("#savedTrips").hide();
+	    	$("#logout-button").hide();
+	    	$("#login-button").show();
+	  	}
+	}, function(error) {
+  		console.log(error);
+	}
+);
+
+/*
+//
+//  Google Maps Section
+//
+*/
+
 	var directionsDisplay;
 	var directionsService;
 	var map;
@@ -191,4 +261,12 @@ $(document).ready(function(){
 $("#submit").click(function(event){
 	event.preventDefault();
 	submit();
+});
+
+$("#logout-button").on("click", function() {
+	firebase.auth().signOut();
+});
+
+$("#login-button").on("click", function() {
+	window.location.assign('/auth');
 });

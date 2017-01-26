@@ -6,9 +6,15 @@
 	<!-- Link to the jQuery Library -->
   	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
+  	<!-- Link to Firebase and Firebase UI -->
+  	<script src="https://www.gstatic.com/firebasejs/live/3.6/firebase.js"></script>
+    <script src="js/config.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+
 	<!-- Links to CSS Stylesheets -->
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" type="image/png" href="./images/icon21.png">
 </head>
@@ -27,7 +33,13 @@
 
 		<div class="divider"> </div>
 
-		<div class="row border padding" id="login-info">
+		<div class="row border padding" id="login-panel">
+    		<span id="account-details">
+    			<img src="" alt="User image" id="user-image" style="width: 200px">
+    			<div id="user-info"></div>
+    		</span>
+
+    		<span id="login-button" class="btn large orange right">login</span>
 			<span id="logout-button" class="btn large orange right">logout</span>
 		</div>
 

@@ -39,9 +39,13 @@ h5 {
 	margin-top: 20px;
 }
 
-#login-info {
+#login-panel {
 	margin-bottom: 20px;
-	display: none;
+	/*display: none;*/
+}
+
+#login-button {
+	margin: 0px;
 }
 
 #logout-button {
