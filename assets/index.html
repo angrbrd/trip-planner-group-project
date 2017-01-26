@@ -2,11 +2,14 @@
 <html>
 <head>
 	<title>PLAN YOUR TRIP!</title>
-	
+
+	<!-- Link to the jQuery Library -->
+  	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+	<!-- Links to CSS Stylesheets -->
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" type="image/png" href="http://maps.google.com/mapfiles/kml/pal2/icon21.png">
 </head>
 
 <body>
@@ -16,9 +19,12 @@
 		</div>
 
 		<div class="row center border padding">
-			<span class="btn large orange open-buttons"> CREATE AN ACCOUNT/LOGIN </span>
-			<span class="btn large orange open-buttons"> CONTINUE AS GUEST </span>
+			<span class="btn large orange open-buttons" id="login"> CREATE AN ACCOUNT/LOGIN </span>
+			<span class="btn large orange open-buttons" id="guest"> CONTINUE AS GUEST </span>
 		</div>
 	</div>
+
+	<!-- Load the application initialization script -->
+	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

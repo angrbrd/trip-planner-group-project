@@ -3,10 +3,13 @@
 <head>
 	<title>PLAN YOUR TRIP!</title>
 
+	<!-- Link to the jQuery Library -->
+  	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+	<!-- Links to CSS Stylesheets -->
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" type="image/png" href="http://maps.google.com/mapfiles/kml/pal2/icon21.png">
 </head>
 
 <body>
@@ -23,8 +26,8 @@
 
 		<div class="divider"> </div>
 
-		<div class="row border padding" id="bottom-line">
-			<div id="login-info"> <span id="logout-button" class="btn large orange right">logout</span></div>
+		<div class="row border padding" id="login-info">
+			<span id="logout-button" class="btn large orange right">logout</span>
 		</div>
 
 		<div class="row noPad">
@@ -111,10 +114,10 @@
 				</div>
 			</div> <!-- End Hotel Suggestion -->
 
-			<div class="col s6"> <!-- Saved Trips Panel -->
+			<div class="col s6" id="savedTrips"> <!-- Saved Trips Panel -->
 				<div class="border">
 					<h5 class="orange"> SAVED TRIPS </h5>
-					<div id="savedTrips"> </div>
+					<div id="tripsList"> </div>
 
 					<div id="save" class="center btn"> <!-- Save Current Trip Button -->
 	        			<span>SAVE CURRENT TRIP!</span>
@@ -143,17 +146,3 @@
 <footer class="orange"> <h5> (c) TALENTED TANGELOS 2017 </h5> </footer>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
