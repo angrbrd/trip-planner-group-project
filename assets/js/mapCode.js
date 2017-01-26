@@ -44,7 +44,7 @@
 			var marker = new google.maps.Marker({
 				position: location,
 				map: map,
-				icon: 'http://maps.google.com/mapfiles/kml/pal2/icon21.png',
+				icon: '../images/icon21.png',
 				animation: google.maps.Animation.DROP
 			});
 			if (gas.exists){
@@ -69,7 +69,7 @@
 	};
 	//takes latitude and longitude from marker placement to get gas data in a 10 mile radius
 	function getGas (lat, lng, callback){
-		var queryURL = "http://api.mygasfeed.com/stations/radius/"+lat+"/"+lng+"/10/reg/Price/lg2dvyvl7v.json";
+		var queryURL = "https://utcors1.herokuapp.com/http://api.mygasfeed.com/stations/radius/"+lat+"/"+lng+"/10/reg/Price/lg2dvyvl7v.json";
   		
   		$.ajax({
         url: queryURL,
@@ -127,7 +127,7 @@
 		var origin = trip.startPoint.replace(/\s/g, "");
 		var destination = trip.endPoint.replace(/\s/g, "");
 		console.log(origin, destination);
-		var queryURL = "https://utcors1.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+origin+"&destinations="+destination+"&key=";
+		var queryURL = "https://utcors1.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+origin+"&destinations="+destination+"&key=AIzaSyClWF3mmliTe-JldccjUJhpsc220W9hRIE";
 		
 		$.ajax({
         	url: queryURL,

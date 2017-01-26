@@ -16,5 +16,5 @@ function triggerUserLogin() {
 function triggerGuestUser() {
 	console.log("ENTER triggerGuestUser");
 
-	location.assign("/tripPlanner");
+	window.location.assign("/tripPlanner");
 }
