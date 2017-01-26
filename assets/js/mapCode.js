@@ -44,7 +44,7 @@
 			var marker = new google.maps.Marker({
 				position: location,
 				map: map,
-				icon: '../images/icon21.png',
+				icon: './images/icon21.png',
 				animation: google.maps.Animation.DROP
 			});
 			if (gas.exists){
