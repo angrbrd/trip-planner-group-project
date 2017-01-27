@@ -13,8 +13,10 @@
   <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
 
   <!-- Links to CSS Stylesheets -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"> -->
   <link rel="stylesheet" href="css/reset.css">
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <link rel="stylesheet" href="css/style.css">
 
   <style>
@@ -55,6 +57,19 @@
 </head>
 
 <body>
+<div class="container header"> <!-- Main Container -->
+
+    <div class="row orange padding no-margin-bottom" id="title">
+      <h1>PLAN YOUR TRIP!</h1>
+    </div>
+
+    <div class="divider"> </div>
+
+    <div class="row orange padding" id="instructions">
+      <h5> Please login to create an account. </h5>
+    </div>
+  </div>
+  <br><br>
   <div id="firebaseui-auth-container"></div>
 </body>
 </html>
