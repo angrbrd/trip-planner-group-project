@@ -40,7 +40,6 @@ firebase.auth().onAuthStateChanged(
 	    	$("#user-info").append(emailP);
 
 	    	// Show the saved trips panel and display the logout button
-	    	//$("#login-panel").show();
 	    	$("#savedTrips").show();
 	    	$("#login-button").hide();
 	  	} else {
