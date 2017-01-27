@@ -21,6 +21,7 @@
 
 <body>
 	<div class="container header"> <!-- Main Container -->
+
 		<div class="row orange padding no-margin-bottom" id="title">
 			<h1>PLAN YOUR TRIP!</h1>
 		</div>
@@ -45,7 +46,7 @@
 
 		<div class="row noPad">
 
-			<div class="col s4"> <!-- Left Side -->
+			<div class="col s12 m4"> <!-- Left Side -->
 				<form class="border"> <!-- Trip Form -->
 					<div id="tripInfo" class="padding"> <!-- Trip Info -->
 						<h5 class="orange">TRIP INFO</h5>
@@ -74,14 +75,15 @@
 
 					<br><br>
 
-					<div id="submit" class="btn"> <!-- Submit Button -->
+					<div id="submit" class="btn button-right"> <!-- Submit Button -->
 						<span>Submit</span>
 	      			</div> <!-- End Submit Button -->
 				</form> <!-- End Trip Form -->
 			</div> <!-- End Left Side -->
 
-			<div class="col s8"> <!-- Right Side -->
+			<div class="col s12 m8"> <!-- Right Side -->
 				<div id="right-side">
+					<h5 id="tripNameLabel" class="orange"></h5>
 					<div id="map" class="border" style="width:100%;height:500px"></div>
 
 					<div> <!-- Gas Station Table -->
@@ -114,7 +116,7 @@
 		</div> <!-- End Gas Cost Estimate -->
 
 		<div class="row marginTop noPad">
-			<div class="col s6"> <!-- Hotel Suggestion -->
+			<div class="col s12 m6"> <!-- Hotel Suggestion -->
 				<div class="border">
 					<h5 class="orange"> NEED A HOTEL? </h5>
 					<div id="hotelInfo"> </div>
@@ -127,12 +129,12 @@
 				</div>
 			</div> <!-- End Hotel Suggestion -->
 
-			<div class="col s6" id="savedTrips"> <!-- Saved Trips Panel -->
+			<div class="col s12 m6" id="savedTrips"> <!-- Saved Trips Panel -->
 				<div class="border">
 					<h5 class="orange"> SAVED TRIPS </h5>
 					<div id="tripsList"> </div>
 
-					<div id="save" class="center btn"> <!-- Save Current Trip Button -->
+					<div id="save" class="center btn button-right"> <!-- Save Current Trip Button -->
 	        			<span>SAVE CURRENT TRIP!</span>
 	        		</div> <!-- End Save Current Trip Button -->
 				</div>
