@@ -101,6 +101,8 @@ firebase.auth().onAuthStateChanged(
 			mileage : $("#mpg").val().trim() 
 		};
 
+		expediaSearch(trip);
+
 		$("#tripName").val("");
 		$("#startDate").val("");
 		$("#endDate").val("");
@@ -239,28 +241,29 @@ firebase.auth().onAuthStateChanged(
 
 	function submit () {
 		buildTrip();
-		expediaSearch();
+		//expediaSearch();
 	}
 
-function expediaSearch() {
-    var originSearch = $("#origin").val();
-	var destinationSearch= $("#destination").val();
-	var startDateSearch = $("#startDate").val();
-	var endDateSearch = $("#endDate").val();
+function expediaSearch(trip) {
+    var originSearch = trip.startPoint;
+    console.log("Origin search "+originSearch)
+	var destinationSearch= trip.endPoint;
+	var startDateSearch = trip.startDate;
+	var endDateSearch = trip.endDate;
         var queryURL = "https://utcors1.herokuapp.com/http://api.hotwire.com/v1/deal/hotel?apikey=pvk45cq5h7r2dyzg2nd9sk98&dest=" + destinationSearch + "&limit=1&format=JSON"
-
+        console.log("queryURL "+ queryURL);
         // Creates AJAX call for hotel deal
         $.ajax({
         	headers: {"x-requested-with": " "},
           url: queryURL,
           method: "GET"
         }).done(function(response) {
-        	
+        	console.log("response: "+ response);
         	var responseHeadline = response.Result.HotelDeal.Headline;
         	var responseRating = response.Result.HotelDeal.StarRating;
         	var responsePrice = response.Result.HotelDeal.Price;
         	var responseURL = response.Result.HotelDeal.Url;
-        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a target='_blank' href='" + responseURL + "'> <div class='btn'><span> MORE INFO </span></div></a><br>");
+        	$("#hotelInfo").html("<p class='center padding'>" + responseHeadline + "</p> <p class='center padding'> Star Rating:" + responseRating + "</p> <a target='_blank' href='" + responseURL + "'> <div class='btn button-right'><span> MORE INFO </span></div></a><br>");
         });
 
       }
