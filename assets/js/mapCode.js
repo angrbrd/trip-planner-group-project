@@ -20,6 +20,8 @@
 	};
 	//creates a trip object and pushes it into a trip array.
 	function buildTrip(){
+		mapInit();
+		$("#output").empty();
 		var trip = {
 			tripName : $("#tripName").val().trim(),
 			startDate : $("#startDate").val().trim(),
