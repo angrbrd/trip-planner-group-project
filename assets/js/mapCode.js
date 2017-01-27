@@ -28,6 +28,17 @@
 			endPoint : $("#destination").val().trim(),
 			mileage : $("#mpg").val().trim() 
 		};
+
+		$("#tripName").val("");
+		$("#startDate").val("");
+		$("#endDate").val("");
+		$("#origin").val("");
+		$("#destination").val("");
+		$("#mpg").val("");
+
+		$("#tripNameLabel").empty()
+						.html(trip.tripName);
+
 		getDistance(trip);
 		console.log(trip);
 		//trips.push(trip);
