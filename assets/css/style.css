@@ -39,9 +39,13 @@ h5 {
 	margin-top: 20px;
 }
 
-#login-info {
+#login-panel {
 	margin-bottom: 20px;
-	display: none;
+	/*display: none;*/
+}
+
+#login-button {
+	margin: 0px;
 }
 
 #logout-button {
@@ -66,7 +70,7 @@ img {
 
 .button-right{
 	margin-top: 20px;
-	margin-right: 30px;
+	margin-left: 50px;
 }
 .header .row {
 	margin-bottom: 0px;
