@@ -83,6 +83,18 @@ firebase.auth().onAuthStateChanged(
 	    	$("#savedTrips").hide();
 	    	$("#logout-button").hide();
 	    	$("#login-button").show();
+
+	    	// Clear any remaining display data
+	    	mapInit();
+			$("#output").empty();
+			$("#tripNameLabel").empty();
+			// Empty the user form for the next input
+			$("#tripName").val("");
+			$("#startDate").val("");
+			$("#endDate").val("");
+			$("#origin").val("");
+			$("#destination").val("");
+			$("#mpg").val("");
 	  	}
 	}, function(error) {
   		console.log(error);
