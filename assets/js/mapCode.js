@@ -87,7 +87,11 @@ function saveTripToDatabase() {
 		endPoint : $("#destination").val().trim(),
 	};
 
-	firebase.database().ref('users/' + currentUserID).set(trip);
+	// Get a key for the new trip entry
+	var newTripKey = firebase.database().ref().child('users/' + currentUserID).push().key;
+
+	// Save the new trip entry
+	firebase.database().ref('users/' + currentUserID + '/' + newTripKey).set(trip);
 }
 
 /*
