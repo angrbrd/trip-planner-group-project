@@ -5,7 +5,11 @@
 
 {
   "rules": {
-    ".read": "auth != null && auth.uid == $uid",
-    ".write": "auth != null && auth.uid == $uid"
+    "users": {
+      "$user": {
+        ".read": "auth.uid === $user",
+        ".write": "auth.uid === $user"
+      }
+    }
   }
 }
