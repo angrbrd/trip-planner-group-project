@@ -108,6 +108,10 @@ thead {
 	font-weight: 100;
 }
 
+tbody tr:hover {
+	background-color: #ffd599;
+}
+
 .marginLeft {
 	margin-left: 10px;
 }
