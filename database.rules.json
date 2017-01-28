@@ -1,12 +1,11 @@
 /*
 	Reading and writing to the database will be permitted upon successful
-	user athentication. Need to understand how to set that up. For now,
-	making the database read and write functionality inaccessible.
+	user athentication.
 */
 
 {
   "rules": {
-    ".read": false,
-    ".write": false
+    ".read": "auth != null && auth.uid == $uid",
+    ".write": "auth != null && auth.uid == $uid"
   }
 }
