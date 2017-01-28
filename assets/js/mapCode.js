@@ -16,6 +16,7 @@ firebase.auth().onAuthStateChanged(
 			// Set the currentUserID variable for future use
 			currentUserID = user.uid;
 
+			// Get the relevant user information from the returned user variable
 	    	var displayName = user.displayName;
 	    	var email = user.email;
 	    	var emailVerified = user.emailVerified;
@@ -35,19 +36,39 @@ firebase.auth().onAuthStateChanged(
 	      		})
 	    	);
 
-	    	// Set the user image
-	    	$("#user-image").attr("src", user.photoURL);
+	    	// Get any entries associated with the current user from the database
+	    	firebase.database().ref('/users/' + currentUserID).once('value').then(function(snapshot) {
+				// Append the retrieved data to the UI table
+				snapshot.forEach(function(childSnapshot) {
+    				var childData = childSnapshot.val();
+    				console.log(JSON.stringify(childData));
 
-	    	// Set the user name and email address
-	    	var nameP = $("<p>").html(user.displayName);
-	    	var emailP = $("<p>").html(user.email);
+					// Create the table row containing the trip data
+					var outputRow = $("<tr>");
+					outputRow.html("<td>"+childData.tripName+"</td>"+
+								   "<td>"+childData.startDate+"</td>"+
+								   "<td>"+childData.endDate+"</td>"+
+								   "<td>"+childData.startPoint+"</td>"+
+								   "<td>"+childData.endPoint+"</td>");
 
-	    	$("#user-info").append(nameP);
-	    	$("#user-info").append(emailP);
+					// Append the trip data to the table
+					$("#trips-table-body").append(outputRow);
+  				});
 
-	    	// Show the saved trips panel and display the logout button
-	    	$("#savedTrips").show();
-	    	$("#login-button").hide();
+	  			// Set the user image
+		    	$("#user-image").attr("src", user.photoURL);
+
+		    	// Set the user name and email address
+		    	var nameP = $("<p>").html(user.displayName);
+		    	var emailP = $("<p>").html(user.email);
+
+		    	$("#user-info").append(nameP);
+		    	$("#user-info").append(emailP);
+
+		    	// Show the saved trips panel and display the logout button
+		    	$("#savedTrips").show();
+		    	$("#login-button").hide();
+			});
 	  	} else {
 	    	// User is signed out
 	    	console.log("User is signed out!");
@@ -76,6 +97,7 @@ firebase.auth().onAuthStateChanged(
 // Get a reference to the database service
 var database = firebase.database();
 
+// saveTripToDatabase saves the current trip information as a new database entry
 function saveTripToDatabase() {
 	console.log("Saving trip info to the database!");
 
