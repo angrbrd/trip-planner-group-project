@@ -4,11 +4,17 @@
 //
 */
 
+// Variable that keeps track of the currently logged in user
+var currentUserID;
+
 firebase.auth().onAuthStateChanged(
 	function(user) {
 		if (user) {
 			// User is signed in
 			console.log("User is signed in!");
+
+			// Set the currentUserID variable for future use
+			currentUserID = user.uid;
 
 	    	var displayName = user.displayName;
 	    	var email = user.email;
@@ -60,6 +66,29 @@ firebase.auth().onAuthStateChanged(
   		console.log(error);
 	}
 );
+
+/*
+//
+//  Firebase Database Section
+//
+*/
+
+// Get a reference to the database service
+var database = firebase.database();
+
+function saveTripToDatabase() {
+	console.log("Saving trip info to the database!");
+
+	var trip = {
+		tripName : $("#tripName").val().trim(),
+		startDate : $("#startDate").val().trim(),
+		endDate : $("#endDate").val().trim(),
+		startPoint : $("#origin").val().trim(),
+		endPoint : $("#destination").val().trim(),
+	};
+
+	firebase.database().ref('users/' + currentUserID).set(trip);
+}
 
 /*
 //
@@ -268,15 +297,22 @@ function expediaSearch(trip) {
 function saveCurrentTrip() {
 	console.log("Saving current trip!");
 
+	// Read in the trip data from the form
 	var tripName = $("#tripName").val().trim();
 	var startDate = $("#startDate").val().trim();
 	var endDate = $("#endDate").val().trim();
 	var startPoint = $("#origin").val().trim();
 	var endPoint = $("#destination").val().trim();
 
+	// Create the table row containing the trip data
 	var outputRow = $("<tr>");
 	outputRow.html("<td>"+tripName+"</td><td>"+startDate+"</td><td>"+endDate+"</td><td>"+startPoint+"</td><td>"+endPoint+"</td>");
+
+	// Append the trip data to the table
 	$("#trips-table-body").append(outputRow);
+
+	// Save the trip data into the database
+	saveTripToDatabase();
 
 	// Empty the user form for the next input
 	$("#tripName").val("");
