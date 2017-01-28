@@ -45,11 +45,12 @@ firebase.auth().onAuthStateChanged(
 
 					// Create the table row containing the trip data
 					var outputRow = $("<tr>");
-					outputRow.html("<td>"+childData.tripName+"</td>"+
-								   "<td>"+childData.startDate+"</td>"+
-								   "<td>"+childData.endDate+"</td>"+
-								   "<td>"+childData.startPoint+"</td>"+
-								   "<td>"+childData.endPoint+"</td>");
+					outputRow.addClass("trip-row");
+					outputRow.html("<td class='trip-name'>"+childData.tripName+"</td>"+
+								   "<td class='trip-start'>"+childData.startDate+"</td>"+
+								   "<td class='trip-end'>"+childData.endDate+"</td>"+
+								   "<td class='trip-origin'>"+childData.startPoint+"</td>"+
+								   "<td class='trip-destination'>"+childData.endPoint+"</td>");
 
 					// Append the trip data to the table
 					$("#trips-table-body").append(outputRow);
@@ -152,7 +153,7 @@ function saveTripToDatabase() {
 			endDate : $("#endDate").val().trim(),
 			startPoint : $("#origin").val().trim(),
 			endPoint : $("#destination").val().trim(),
-			mileage : $("#mpg").val().trim() 
+			mileage : $("#mpg").val().trim()
 		};
 
 		expediaSearch(trip);
@@ -332,7 +333,12 @@ function saveCurrentTrip() {
 
 	// Create the table row containing the trip data
 	var outputRow = $("<tr>");
-	outputRow.html("<td>"+tripName+"</td><td>"+startDate+"</td><td>"+endDate+"</td><td>"+startPoint+"</td><td>"+endPoint+"</td>");
+	outputRow.addClass("trip-row");
+	outputRow.html("<td class='trip-name'>"+tripName+"</td>"+
+				   "<td class='trip-start'>"+startDate+"</td>"+
+				   "<td class='trip-end'>"+endDate+"</td>"+
+				   "<td class='trip-origin'>"+startPoint+"</td>"+
+				   "<td class='trip-destination'>"+endPoint+"</td>");
 
 	// Append the trip data to the table
 	$("#trips-table-body").append(outputRow);
@@ -349,25 +355,43 @@ function saveCurrentTrip() {
 	$("#mpg").val("");
 }
 
+// loadSavedTrip populates the form and redraws the map when the user clicks a previously saved trip
+function loadSavedTrip() {
+	$("#tripName").val($(this).children(".trip-name").html());
+	$("#startDate").val($(this).children(".trip-start").html());
+	$("#endDate").val($(this).children(".trip-end").html());
+	$("#origin").val($(this).children(".trip-origin").html());
+	$("#destination").val($(this).children(".trip-destination").html());
 
-$(document).ready(function(){
+	// Redraw the map for the loaded trip
+	buildTrip();
+}
+
+// Initialize the map when the page has loaded
+$(document).ready(function() {
 	mapInit();
 });
 
-
-$("#submit").click(function(event){
+// Submit the form and draw the map upon clicking "Submit"
+$("#submit").click(function(event) {
 	event.preventDefault();
 	submit();
 });
 
+// Log out the current user when the "Logout" button is clicked
 $("#logout-button").on("click", function() {
 	firebase.auth().signOut();
 });
 
+// Redirect the user to the authentication page when the "Login" button is clicked
 $("#login-button").on("click", function() {
 	window.location.assign('/auth');
 });
 
+// Save the current trip info in the UI table and the datase when the "Save Current Trip" button is clicked
 $("#save-current-trip").on("click", function() {
 	saveCurrentTrip();
 });
+
+// Load the saved trip data when the trip row is clicked
+$(document).on("click", ".trip-row", loadSavedTrip);
