@@ -102,13 +102,6 @@ firebase.auth().onAuthStateChanged(
 
 		expediaSearch(trip);
 
-		$("#tripName").val("");
-		$("#startDate").val("");
-		$("#endDate").val("");
-		$("#origin").val("");
-		$("#destination").val("");
-		$("#mpg").val("");
-
 		$("#tripNameLabel").empty().html(trip.tripName);
 
 		getDistance(trip);
@@ -271,6 +264,29 @@ function expediaSearch(trip) {
 
       }
 
+// saveCurrentTrip enters the current trip data into the UI table as well as into the database
+function saveCurrentTrip() {
+	console.log("Saving current trip!");
+
+	var tripName = $("#tripName").val().trim();
+	var startDate = $("#startDate").val().trim();
+	var endDate = $("#endDate").val().trim();
+	var startPoint = $("#origin").val().trim();
+	var endPoint = $("#destination").val().trim();
+
+	var outputRow = $("<tr>");
+	outputRow.html("<td>"+tripName+"</td><td>"+startDate+"</td><td>"+endDate+"</td><td>"+startPoint+"</td><td>"+endPoint+"</td>");
+	$("#trips-table-body").append(outputRow);
+
+	// Empty the user form for the next input
+	$("#tripName").val("");
+	$("#startDate").val("");
+	$("#endDate").val("");
+	$("#origin").val("");
+	$("#destination").val("");
+	$("#mpg").val("");
+}
+
 
 $(document).ready(function(){
 	mapInit();
@@ -291,8 +307,5 @@ $("#login-button").on("click", function() {
 });
 
 $("#save-current-trip").on("click", function() {
-	console.log("Saving current trip!");
-
-
-
+	saveCurrentTrip();
 });

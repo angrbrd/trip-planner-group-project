@@ -138,9 +138,24 @@
 			<div class="col s12 m6" id="savedTrips"> <!-- Saved Trips Panel -->
 				<div class="border">
 					<h5 class="orange"> SAVED TRIPS </h5>
-					<div id="tripsList"> </div>
 
-					<div id="save" class="center btn button-right"> <!-- Save Current Trip Button -->
+					<div id="tripsList"> <!-- Trips Table -->
+						<table class="border centered marginTop">
+	        				<thead class="orange" id="trips-table-header">
+	          					<tr>
+	          	  					<th data-field="station">TRIP</th>
+						            <th data-field="address">START DATE</th>
+						            <th data-field="city">END DATE</th>
+						            <th data-field="gasPrice">ORIGIN</th>
+						            <th data-field="gasPrice">DESTINATION</th>
+						        </tr>
+	        				</thead>
+
+	        				<tbody id="trips-table-body"></tbody>
+	       				</table>
+	       			</div> <!-- End Trips Table -->
+
+					<div id="save-current-trip" class="center btn button-right"> <!-- Save Current Trip Button -->
 	        			<span>SAVE CURRENT TRIP!</span>
 	        		</div> <!-- End Save Current Trip Button -->
 				</div>
