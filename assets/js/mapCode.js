@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged(
 		directionsDisplay.setMap(map);
 	};
 	//creates a trip object and pushes it into a trip array.
-	function buildTrip(){
+	function buildTrip() {
 		mapInit();
 		$("#output").empty();
 		var trip = {
@@ -109,8 +109,7 @@ firebase.auth().onAuthStateChanged(
 		$("#destination").val("");
 		$("#mpg").val("");
 
-		$("#tripNameLabel").empty()
-						.html(trip.tripName);
+		$("#tripNameLabel").empty().html(trip.tripName);
 
 		getDistance(trip);
 		console.log(trip);
@@ -224,7 +223,12 @@ firebase.auth().onAuthStateChanged(
       		//distance = distance.replace("mi", "");
       		console.log(trip);
       		console.log("distance value: "+ distance);
-      		getCost(trip.mileage, distance);
+      		// Compute the cost estimate only when the user supplied the miles per gallon value
+      		if (trip.mileage !== "") {
+      			getCost(trip.mileage, distance);
+      		} else {
+      			$("#estimate").empty().html("N/A");
+      		}
       	});
 	}
 
@@ -284,4 +288,11 @@ $("#logout-button").on("click", function() {
 
 $("#login-button").on("click", function() {
 	window.location.assign('/auth');
+});
+
+$("#save-current-trip").on("click", function() {
+	console.log("Saving current trip!");
+
+
+
 });
