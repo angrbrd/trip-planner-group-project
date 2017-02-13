@@ -10,7 +10,7 @@ The goal of this project was to create a simple and user friendly road trip plan
 
 The final application can be found here:
 	
-	https://trip-planner-332e4.firebaseapp.com/
+[https://trip-planner-332e4.firebaseapp.com/](https://trip-planner-332e4.firebaseapp.com/)
 
 Please look around and save some trips to your personal account! Note the additional features that this application offers:
 
